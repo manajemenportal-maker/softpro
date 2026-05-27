@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebAppsMarket - Galeri 20 Template Starter</title>
+  <meta name="description" content="Pilih 20 template website Starter siap pakai. Preview desain, pilih template, lalu kirim pesanan." />
+  <meta property="og:title" content="Galeri 20 Template Website Starter" />
+  <meta property="og:description" content="Customer bebas memilih template website sesuai bisnisnya mulai 75rb+/tahun." />
+  <meta property="og:type" content="website" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    :root{--blue:#0f3d91;--orange:#ff6a00;--green:#16a34a;--dark:#111827;}
+    html{scroll-behavior:smooth}
+    body{font-family:Inter,system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;background:#f8fafc;color:#172033}
+    .hero-bg{background:radial-gradient(circle at 12% 10%,rgba(255,255,255,.9),transparent 26%),linear-gradient(135deg,#ff6a00 0%,#ff8a1d 48%,#fff0d9 100%)}
+    .glass{background:rgba(255,255,255,.84);backdrop-filter:blur(16px)}
+    .template-card{transition:.22s ease;cursor:pointer}
+    .template-card:hover{transform:translateY(-4px);box-shadow:0 18px 45px rgba(15,23,42,.12)}
+    .template-card.active{outline:3px solid rgba(37,99,235,.45);box-shadow:0 18px 45px rgba(37,99,235,.16)}
+    .mock-thumb{background:linear-gradient(135deg,var(--c1),var(--c2));}
+    .mock-hero{background:linear-gradient(135deg,var(--c1),var(--c2));}
+    .mini-window{box-shadow:0 25px 70px rgba(15,23,42,.2)}
+    .phone-shell{border:9px solid #111827;border-radius:30px;overflow:hidden;box-shadow:0 20px 50px rgba(15,23,42,.25)}
+    .category-btn.active{background:#0f3d91;color:white;border-color:#0f3d91}
+    .view-btn.active{background:#0f3d91;color:white;border-color:#0f3d91}
+  </style>
+</head>
+<body>
+  <nav class="sticky top-0 z-50 bg-white/95 backdrop-blur border-b border-slate-200">
+    <div class="max-w-[1500px] mx-auto px-4 py-3 flex items-center justify-between gap-3">
+      <a href="#home" class="flex items-center gap-2 font-black text-lg">
+        <span class="w-10 h-10 rounded-2xl bg-blue-900 text-white grid place-items-center"><i class="fa-solid fa-layer-group"></i></span>
+        <span>WebApps<span class="text-orange-500">Market</span></span>
+      </a>
+      <div class="hidden md:flex items-center gap-6 text-sm font-bold text-slate-700">
+        <a href="#galeri" class="hover:text-blue-700">20 Preview Starter</a>
+        <a href="#harga" class="hover:text-blue-700">Harga</a>
+        <a href="#order" class="hover:text-blue-700">Order</a>
+      </div>
+      <a href="#galeri" class="px-4 py-2 rounded-full bg-orange-500 hover:bg-orange-600 text-white text-sm font-black shadow-lg shadow-orange-200">Lihat Template</a>
+    </div>
+  </nav>
+
+  <main id="home" class="hero-bg py-16 md:py-24 overflow-hidden">
+    <section class="max-w-[1500px] mx-auto px-4 grid lg:grid-cols-[.95fr_1.05fr] gap-10 items-center">
+      <div class="text-white">
+        <div class="inline-flex items-center gap-2 bg-white/20 border border-white/35 rounded-full px-4 py-2 text-sm font-black mb-5">
+          <i class="fa-solid fa-wand-magic-sparkles"></i> Customer bebas pilih desain, bukan cuma 3 contoh
+        </div>
+        <h1 class="text-4xl md:text-6xl font-black leading-tight mb-5">Jualan Website Lebih Meyakinkan dengan 20 Preview Template.</h1>
+        <p class="text-lg md:text-xl text-white/95 mb-7 max-w-2xl">Aplikasi ini sudah memasukkan galeri <b>20 template Starter</b>. Customer klik <b>Lihat Preview</b>, melihat tampilan desktop/mobile, lalu pilih template dan kirim pesanan.</p>
+        <div class="flex flex-wrap gap-3">
+          <a href="#galeri" class="px-6 py-4 rounded-2xl bg-white text-orange-600 font-black shadow-xl hover:scale-[1.02] transition">Buka Galeri 20 Template</a>
+          <a href="#order" class="px-6 py-4 rounded-2xl bg-black/20 border border-white/35 text-white font-black hover:bg-black/30 transition">Kirim Pesanan</a>
+        </div>
+        <div class="mt-8 grid grid-cols-3 gap-3 max-w-xl">
+          <div class="glass rounded-2xl p-4 text-slate-800"><b class="text-2xl">20</b><p class="text-xs font-bold">Preview Starter</p></div>
+          <div class="glass rounded-2xl p-4 text-slate-800"><b class="text-2xl">75rb+</b><p class="text-xs font-bold">Mulai / tahun</p></div>
+          <div class="glass rounded-2xl p-4 text-slate-800"><b class="text-2xl">Auto</b><p class="text-xs font-bold">Order WA</p></div>
+        </div>
+      </div>
+      <div class="glass rounded-[34px] p-4 md:p-6 shadow-2xl">
+        <div class="bg-white rounded-[28px] overflow-hidden border border-slate-200">
+          <div class="p-4 border-b flex items-center justify-between">
+            <b class="text-blue-900">Galeri 20 Template Starter</b>
+            <span class="text-xs px-3 py-1 rounded-full bg-orange-100 text-orange-700 font-black">LIVE DEMO</span>
+          </div>
+          <div class="grid grid-cols-4 gap-3 p-4">
+            <div class="h-24 rounded-2xl bg-blue-100"></div><div class="h-24 rounded-2xl bg-green-100"></div><div class="h-24 rounded-2xl bg-red-100"></div><div class="h-24 rounded-2xl bg-yellow-100"></div>
+            <div class="h-24 rounded-2xl bg-slate-200"></div><div class="h-24 rounded-2xl bg-amber-100"></div><div class="h-24 rounded-2xl bg-teal-100"></div><div class="h-24 rounded-2xl bg-purple-100"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <section id="harga" class="py-14 bg-white border-b border-slate-200">
+    <div class="max-w-[1500px] mx-auto px-4">
+      <div class="grid md:grid-cols-3 gap-5">
+        <div class="rounded-3xl p-7 bg-orange-50 border border-orange-100">
+          <div class="text-sm font-black text-orange-600">STARTER</div>
+          <h3 class="text-3xl font-black mt-2">Rp 75rb+ <span class="text-base font-bold text-slate-500">/tahun</span></h3>
+          <p class="text-slate-600 mt-2">Template siap pakai untuk bisnis kecil/UMKM. Sudah termasuk 20 pilihan preview Starter.</p>
+        </div>
+        <div class="rounded-3xl p-7 bg-blue-50 border border-blue-100">
+          <div class="text-sm font-black text-blue-700">BUSINESS</div>
+          <h3 class="text-3xl font-black mt-2">Rp 250rb+</h3>
+          <p class="text-slate-600 mt-2">Untuk website lebih lengkap, multi-section, form order, dan admin ringan.</p>
+        </div>
+        <div class="rounded-3xl p-7 bg-slate-900 text-white border border-slate-800">
+          <div class="text-sm font-black text-orange-400">PREMIUM APP</div>
+          <h3 class="text-3xl font-black mt-2">Rp 2jt+</h3>
+          <p class="text-white/70 mt-2">Untuk aplikasi custom dengan login, database, dashboard, dan modul operasional.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="galeri" class="py-8 bg-slate-50">
+    <div class="max-w-[1500px] mx-auto px-4 grid xl:grid-cols-[220px_1fr_470px] gap-5 items-start">
+      <aside class="bg-white rounded-3xl border border-slate-200 p-4 sticky top-20 hidden xl:block">
+        <h3 class="font-black mb-3">Pilih Kategori</h3>
+        <div id="categoryList" class="space-y-2"></div>
+        <div class="mt-6 rounded-2xl bg-slate-50 border border-slate-200 p-4">
+          <b>Bingung memilih?</b>
+          <p class="text-sm text-slate-600 mt-1">Konsultasikan kebutuhan website Anda dengan tim kami.</p>
+          <button onclick="sendSelectedToWhatsApp()" class="mt-3 w-full py-2 rounded-xl bg-blue-900 text-white font-black text-sm">Konsultasi Gratis</button>
+        </div>
+      </aside>
+
+      <div class="min-w-0">
+        <div class="bg-white rounded-3xl border border-slate-200 p-5 mb-5">
+          <div class="flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+            <div>
+              <h2 class="text-3xl md:text-4xl font-black">Galeri <span class="text-blue-700">20 Template Starter</span></h2>
+              <p class="text-slate-600 mt-1">Klik <b>Lihat Preview</b> agar customer bisa melihat desain sebelum pesan.</p>
+            </div>
+            <div class="relative w-full lg:w-[340px]">
+              <i class="fa-solid fa-magnifying-glass absolute left-4 top-1/2 -translate-y-1/2 text-slate-400"></i>
+              <input id="searchInput" oninput="renderTemplates()" class="w-full pl-11 pr-4 py-3 rounded-2xl border border-slate-200 focus:outline-blue-300" placeholder="Cari template atau industri..." />
+            </div>
+          </div>
+          <div class="flex flex-wrap gap-2 mt-5 xl:hidden" id="mobileCategoryList"></div>
+        </div>
+
+        <div id="templateGrid" class="grid sm:grid-cols-2 lg:grid-cols-3 2xl:grid-cols-4 gap-4"></div>
+      </div>
+
+      <aside class="bg-white rounded-3xl border border-slate-200 p-5 sticky top-20 min-h-[760px]" id="previewPanel">
+        <div class="flex items-center justify-between gap-3 mb-4">
+          <div>
+            <div class="text-sm text-slate-500 font-bold">Template terpilih</div>
+            <h3 id="previewTitle" class="text-xl font-black">-</h3>
+          </div>
+          <span id="previewCategory" class="text-xs px-3 py-1 rounded-full bg-blue-50 text-blue-700 font-black">-</span>
+        </div>
+
+        <div class="grid grid-cols-2 gap-2 p-1 bg-slate-100 rounded-2xl mb-4">
+          <button id="desktopBtn" onclick="setViewMode('desktop')" class="view-btn active py-3 rounded-xl border border-transparent text-sm font-black"><i class="fa-solid fa-desktop"></i> Preview Desktop</button>
+          <button id="mobileBtn" onclick="setViewMode('mobile')" class="view-btn py-3 rounded-xl border border-transparent text-sm font-black"><i class="fa-solid fa-mobile-screen"></i> Preview Mobile</button>
+        </div>
+
+        <div id="previewCanvas" class="rounded-3xl overflow-hidden border border-slate-200 bg-slate-100"></div>
+        <div id="previewFeatures" class="mt-5 space-y-3"></div>
+
+        <div class="grid grid-cols-2 gap-3 mt-5">
+          <button onclick="chooseTemplate()" class="py-4 rounded-2xl bg-blue-900 text-white font-black"><i class="fa-solid fa-circle-check"></i> Pilih Template Ini</button>
+          <button onclick="sendSelectedToWhatsApp()" class="py-4 rounded-2xl bg-green-600 text-white font-black"><i class="fa-brands fa-whatsapp"></i> Kirim Pesanan</button>
+        </div>
+        <p class="text-xs text-slate-500 text-center mt-3"><i class="fa-solid fa-lock"></i> Pembayaran aman & desain bisa dikonsultasikan.</p>
+      </aside>
+    </div>
+  </section>
+
+  <section id="order" class="py-16 bg-white">
+    <div class="max-w-4xl mx-auto px-4">
+      <div class="rounded-[32px] bg-orange-50 border border-orange-100 p-6 md:p-8">
+        <span class="text-orange-600 font-black">FORM PESANAN</span>
+        <h2 class="text-3xl md:text-4xl font-black mt-2">Pesanan mengikuti template yang customer pilih.</h2>
+        <form class="grid md:grid-cols-2 gap-4 mt-6" onsubmit="event.preventDefault();sendSelectedToWhatsApp();">
+          <label class="block"><span class="text-sm font-bold">Nama</span><input id="name" class="mt-2 w-full rounded-2xl border border-orange-100 px-4 py-3 focus:outline-orange-400" placeholder="Nama pemesan" /></label>
+          <label class="block"><span class="text-sm font-bold">WhatsApp</span><input id="wa" class="mt-2 w-full rounded-2xl border border-orange-100 px-4 py-3 focus:outline-orange-400" placeholder="08xxxxxxxxxx" /></label>
+          <label class="block md:col-span-2"><span class="text-sm font-bold">Nama bisnis / brand</span><input id="brand" class="mt-2 w-full rounded-2xl border border-orange-100 px-4 py-3 focus:outline-orange-400" placeholder="Contoh: PT / CV / UD bisnis customer" /></label>
+          <label class="block md:col-span-2"><span class="text-sm font-bold">Catatan kebutuhan</span><textarea id="notes" rows="4" class="mt-2 w-full rounded-2xl border border-orange-100 px-4 py-3 focus:outline-orange-400" placeholder="Isi kebutuhan tambahan, warna, domain, menu, dll."></textarea></label>
+          <button class="md:col-span-2 mt-2 py-4 rounded-2xl bg-orange-500 hover:bg-orange-600 text-white font-black shadow-xl shadow-orange-200"><i class="fa-brands fa-whatsapp"></i> Kirim Pesanan Template via WhatsApp</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="bg-slate-950 text-white py-10">
+    <div class="max-w-[1500px] mx-auto px-4 flex flex-col md:flex-row gap-4 justify-between items-center text-sm text-white/70">
+      <b class="text-white">WebAppsMarket</b>
+      <p>Galeri 20 preview Starter sudah masuk langsung ke coding utama.</p>
+      <a href="#galeri" class="font-black text-orange-400">Pilih Template</a>
+    </div>
+  </footer>
+
+  <script>
+    const targetWa = '6285111033789';
+    const templates = [
+      {id:1,title:'PT Aruna Konstruksi Nusantara',category:'Konstruksi',industry:'Kontraktor Bangunan',price:'Mulai 75rb+/tahun',c1:'#0f2747',c2:'#ff6a00',icon:'fa-building',hero:'Membangun Solusi, Mewujudkan Kepercayaan',desc:'Website profesional untuk kontraktor, proyek gedung, infrastruktur, dan portofolio pembangunan.',features:['Desain konstruksi profesional','Galeri proyek unggulan','Tombol WhatsApp proyek','SEO dasar siap Google']},
+      {id:2,title:'CV Pustaka Edukasi Mandiri',category:'Pendidikan',industry:'Toko Buku & Alat Tulis',price:'Mulai 75rb+/tahun',c1:'#166534',c2:'#facc15',icon:'fa-book-open',hero:'Lengkapi Kebutuhan Belajar dengan Produk Terbaik',desc:'Cocok untuk toko buku, alat tulis, perlengkapan sekolah, dan katalog edukasi.',features:['Katalog produk edukasi','Kategori buku & ATK','Order WhatsApp cepat','Tampilan ramah keluarga']},
+      {id:3,title:'PT Cipta Logistik Prima',category:'Logistik',industry:'Ekspedisi & Distribusi',price:'Mulai 75rb+/tahun',c1:'#0b3b8c',c2:'#e11d48',icon:'fa-truck-fast',hero:'Kirim Barang Aman, Cepat & Tepat Sampai Tujuan',desc:'Template untuk jasa logistik, ekspedisi, distribusi, dan pengiriman barang.',features:['Layanan pengiriman','Area jangkauan','Tracking CTA','Kontak pelanggan cepat']},
+      {id:4,title:'CV Rasa Boga Nusantara',category:'Kuliner',industry:'Catering & Nasi Box',price:'Mulai 75rb+/tahun',c1:'#7f1d1d',c2:'#d97706',icon:'fa-utensils',hero:'Catering Harian, Nasi Box & Konsumsi untuk Acara',desc:'Website catering dengan menu paket, testimoni, jadwal, dan tombol order.',features:['Paket catering','Menu nasi box','Order via WhatsApp','Testimoni pelanggan']},
+      {id:5,title:'PT Bumi Hijau Agrindo',category:'Pertanian',industry:'Bibit & Pupuk',price:'Mulai 75rb+/tahun',c1:'#166534',c2:'#84cc16',icon:'fa-seedling',hero:'Menyediakan Kebutuhan Pertanian Berkualitas',desc:'Untuk bibit tanaman, pupuk, alat pertanian ringan, dan konsultasi tanam.',features:['Produk pertanian','Tips bertani','Kategori pembibitan','Konsultasi tanam']},
+      {id:6,title:'CV Sentra Interior Kreasi',category:'Interior',industry:'Interior & Furniture Custom',price:'Mulai 75rb+/tahun',c1:'#1f2937',c2:'#b45309',icon:'fa-couch',hero:'Ciptakan Ruang Impian dengan Sentuhan Profesional',desc:'Website elegan untuk interior, kitchen set, custom furniture, dan renovasi ringan.',features:['Portofolio interior','Layanan kitchen set','Desain elegan','Konsultasi gratis']},
+      {id:7,title:'PT Sinar Medika Pratama',category:'Kesehatan',industry:'Klinik Umum',price:'Mulai 75rb+/tahun',c1:'#0f766e',c2:'#38bdf8',icon:'fa-kit-medical',hero:'Sehat Anda, Prioritas Kami',desc:'Untuk klinik, pemeriksaan kesehatan, jadwal dokter, dan konsultasi pasien.',features:['Jadwal dokter','Layanan klinik','Booking WhatsApp','Tampilan terpercaya']},
+      {id:8,title:'UD Mebel Jati Lestari',category:'Furnitur',industry:'Mebel Kayu',price:'Mulai 75rb+/tahun',c1:'#3f2a1d',c2:'#166534',icon:'fa-chair',hero:'Mebel Kayu Berkualitas, Buatan Tangan Terpercaya',desc:'Template rustic elegan untuk mebel kayu, lemari, meja, kursi, dan custom order.',features:['Galeri produk mebel','Keunggulan pengerjaan','Order custom','Nuansa premium kayu']},
+      {id:9,title:'PT Samudra Marine Supply',category:'Kelautan',industry:'Marine & Industrial Supply',price:'Mulai 75rb+/tahun',c1:'#082f49',c2:'#ea580c',icon:'fa-ship',hero:'Solusi Supply Marine & Industri Terlengkap',desc:'Untuk bisnis alat marine, safety gear, supply industri, dan kebutuhan proyek.',features:['Kategori produk supply','Katalog CTA','Profil industrial','Kontak procurement']},
+      {id:10,title:'CV Digital Printing Sejahtera',category:'Digital Printing',industry:'Percetakan & Branding',price:'Mulai 75rb+/tahun',c1:'#0f172a',c2:'#ec4899',icon:'fa-print',hero:'Cetak Berkualitas, Branding Maksimal!',desc:'Website percetakan, banner, stiker, desain grafis, dan kebutuhan promosi.',features:['Portofolio desain','Produk percetakan','Order online','Gaya kreatif CMYK']},
+      {id:11,title:'PT Sumber Rezeki Retailindo',category:'Retail',industry:'Toko Retail',price:'Mulai 75rb+/tahun',c1:'#0f3d91',c2:'#f59e0b',icon:'fa-store',hero:'Belanja Mudah, Produk Lengkap, Harga Bersahabat',desc:'Untuk toko retail, minimarket, toko serba ada, dan katalog produk harian.',features:['Katalog produk retail','Promo mingguan','Lokasi toko','Order cepat']},
+      {id:12,title:'CV Lex Prima Legal Services',category:'Legal',industry:'Jasa Legalitas',price:'Mulai 75rb+/tahun',c1:'#111827',c2:'#a16207',icon:'fa-scale-balanced',hero:'Solusi Legalitas Bisnis yang Lebih Terarah',desc:'Untuk jasa hukum, legalitas PT/CV, kontrak, konsultasi, dan dokumen bisnis.',features:['Layanan legalitas','Profil konsultan','Form konsultasi','Kesan formal terpercaya']},
+      {id:13,title:'UD Cantik Alami Beauty & Skincare',category:'Kecantikan',industry:'Beauty & Skincare',price:'Mulai 75rb+/tahun',c1:'#be185d',c2:'#f9a8d4',icon:'fa-spa',hero:'Perawatan Terbaik untuk Diri Terbaikmu',desc:'Untuk salon, skincare, treatment wajah, booking, dan promo kecantikan.',features:['Booking treatment','Promo beauty','Testimoni pelanggan','Desain feminin elegan']},
+      {id:14,title:'PT Jelajah Dunia Travel & Tour',category:'Travel',industry:'Travel & Tour',price:'Mulai 75rb+/tahun',c1:'#4338ca',c2:'#0ea5e9',icon:'fa-plane-departure',hero:'Liburan Mudah, Cerita Tak Terlupakan',desc:'Untuk travel, paket wisata, jadwal keberangkatan, dan konsultasi tour.',features:['Paket tour','Jadwal perjalanan','CTA WhatsApp','Visual destinasi']},
+      {id:15,title:'UD Auto Max Bengkel Profesional',category:'Bengkel',industry:'Bengkel Mobil',price:'Mulai 75rb+/tahun',c1:'#111827',c2:'#f97316',icon:'fa-car-side',hero:'Bengkel Profesional untuk Kendaraan Anda',desc:'Untuk bengkel mobil umum, booking service, paket perawatan, dan kontak cepat.',features:['Booking service','Paket perawatan','Galeri workshop','Kontak darurat']},
+      {id:16,title:'PT Sehat Sentosa Apotek',category:'Farmasi',industry:'Apotek',price:'Mulai 75rb+/tahun',c1:'#047857',c2:'#22c55e',icon:'fa-prescription-bottle-medical',hero:'Kebutuhan Kesehatan Lebih Mudah Didapat',desc:'Untuk apotek, katalog obat OTC, produk kesehatan, dan layanan pesan antar.',features:['Katalog apotek','Produk kesehatan','Pesan antar','Tampilan bersih']},
+      {id:17,title:'CV Griya Sejahtera Properti',category:'Properti',industry:'Properti & Agent',price:'Mulai 75rb+/tahun',c1:'#0f172a',c2:'#d97706',icon:'fa-house-chimney',hero:'Temukan Rumah Impian dan Investasi Terbaik',desc:'Untuk agent properti, listing rumah, ruko, tanah, dan form prospek.',features:['Listing properti','Form minat','Galeri rumah','Profil agent']},
+      {id:18,title:'PT Eventika Kreasi Nusantara',category:'Event Organizer',industry:'Event Organizer',price:'Mulai 75rb+/tahun',c1:'#581c87',c2:'#f43f5e',icon:'fa-champagne-glasses',hero:'Buat Event Lebih Berkesan dan Terencana',desc:'Untuk EO, wedding, gathering, launching, seminar, dan layanan event.',features:['Paket event','Galeri acara','Testimoni klien','Konsultasi event']},
+      {id:19,title:'CV Inovasi Solusi Konsultan Bisnis',category:'Konsultan',industry:'Konsultan Bisnis',price:'Mulai 75rb+/tahun',c1:'#0f172a',c2:'#2563eb',icon:'fa-briefcase',hero:'Strategi Bisnis Lebih Rapi, Keputusan Lebih Tepat',desc:'Untuk konsultan bisnis, manajemen, SOP, audit, dan pengembangan usaha.',features:['Layanan konsultasi','Studi kasus','Profil tim','Form konsultasi']},
+      {id:20,title:'UD Tekno Solusi IT & Software',category:'Teknologi',industry:'IT & Software',price:'Mulai 75rb+/tahun',c1:'#020617',c2:'#06b6d4',icon:'fa-code',hero:'Solusi IT & Software untuk Bisnis Modern',desc:'Untuk jasa IT, software house, website, sistem, dan dukungan teknologi.',features:['Layanan IT','Portofolio software','Support teknis','Tampilan teknologi']}
+    ];
+
+    const categories = ['Semua Kategori',...new Set(templates.map(t=>t.category))];
+    let selectedCategory = 'Semua Kategori';
+    let selectedTemplate = templates[0];
+    let viewMode = 'desktop';
+
+    function renderCategories(){
+      const wrap = document.getElementById('categoryList');
+      const mob = document.getElementById('mobileCategoryList');
+      const html = categories.map(cat => `<button onclick="setCategory('${cat}')" class="category-btn ${cat===selectedCategory?'active':''} w-full text-left px-3 py-2 rounded-xl border border-slate-200 text-sm font-bold"><i class="fa-solid ${cat==='Semua Kategori'?'fa-border-all':'fa-tag'} mr-2"></i>${cat}</button>`).join('');
+      const htmlMob = categories.map(cat => `<button onclick="setCategory('${cat}')" class="category-btn ${cat===selectedCategory?'active':''} px-3 py-2 rounded-xl border border-slate-200 text-sm font-bold">${cat}</button>`).join('');
+      wrap.innerHTML = html;
+      mob.innerHTML = htmlMob;
+    }
+
+    function setCategory(cat){selectedCategory=cat;renderCategories();renderTemplates();}
+
+    function getFilteredTemplates(){
+      const keyword = (document.getElementById('searchInput')?.value || '').toLowerCase();
+      return templates.filter(t => {
+        const catOk = selectedCategory === 'Semua Kategori' || t.category === selectedCategory;
+        const keyOk = !keyword || `${t.title} ${t.category} ${t.industry}`.toLowerCase().includes(keyword);
+        return catOk && keyOk;
+      });
+    }
+
+    function renderTemplates(){
+      const grid = document.getElementById('templateGrid');
+      const data = getFilteredTemplates();
+      grid.innerHTML = data.map(t => `
+        <article onclick="showPreview(${t.id})" class="template-card ${selectedTemplate.id===t.id?'active':''} bg-white rounded-3xl border border-slate-200 overflow-hidden">
+          ${thumbPreview(t)}
+          <div class="p-4">
+            <h3 class="font-black leading-tight">${t.title}</h3>
+            <p class="text-xs text-slate-500 mt-1">${t.industry}</p>
+            <div class="flex items-center justify-between gap-2 mt-4">
+              <span class="text-xs font-black text-orange-600">${t.price}</span>
+              <button class="px-3 py-2 rounded-xl border border-blue-200 text-blue-800 text-xs font-black hover:bg-blue-50">Lihat Preview</button>
+            </div>
+          </div>
+        </article>`).join('') || `<div class="col-span-full rounded-3xl bg-white border border-slate-200 p-8 text-center"><b>Tidak ada template ditemukan.</b><p class="text-slate-500">Coba kategori atau kata kunci lain.</p></div>`;
+    }
+
+    function showPreview(id){
+      selectedTemplate = templates.find(t=>t.id===id) || templates[0];
+      renderTemplates();
+      renderPreview();
+      document.getElementById('previewPanel').scrollIntoView({behavior:'smooth',block:'start'});
+    }
+
+    function setViewMode(mode){
+      viewMode = mode;
+      document.getElementById('desktopBtn').classList.toggle('active',mode==='desktop');
+      document.getElementById('mobileBtn').classList.toggle('active',mode==='mobile');
+      renderPreview();
+    }
+
+    function categoryAccent(t){
+      const map = {
+        'Konstruksi':['#0f2747','#ff6a00','fa-building'],
+        'Pendidikan':['#166534','#facc15','fa-book-open'],
+        'Logistik':['#0b3b8c','#e11d48','fa-truck-fast'],
+        'Kuliner':['#7f1d1d','#d97706','fa-utensils'],
+        'Pertanian':['#166534','#84cc16','fa-seedling'],
+        'Interior':['#1f2937','#b45309','fa-couch'],
+        'Kesehatan':['#0f766e','#38bdf8','fa-kit-medical'],
+        'Furnitur':['#3f2a1d','#166534','fa-chair'],
+        'Kelautan':['#082f49','#ea580c','fa-ship'],
+        'Digital Printing':['#0f172a','#ec4899','fa-print'],
+        'Retail':['#0f3d91','#f59e0b','fa-store'],
+        'Legal':['#111827','#a16207','fa-scale-balanced'],
+        'Kecantikan':['#be185d','#f9a8d4','fa-spa'],
+        'Travel':['#4338ca','#0ea5e9','fa-plane-departure'],
+        'Bengkel':['#111827','#f97316','fa-car-side'],
+        'Farmasi':['#047857','#22c55e','fa-prescription-bottle-medical'],
+        'Properti':['#0f172a','#d97706','fa-house-chimney'],
+        'Event Organizer':['#581c87','#f43f5e','fa-champagne-glasses'],
+        'Konsultan':['#0f172a','#2563eb','fa-briefcase'],
+        'Teknologi':['#020617','#06b6d4','fa-code']
+      };
+      return map[t.category] || [t.c1,t.c2,t.icon];
+    }
+
+    function thumbPreview(t){
+      const [c1,c2,ic] = categoryAccent(t);
+      const mini = {
+        'Konstruksi':`<div class="grid grid-cols-3 gap-1 mt-3"><div class="h-9 bg-white/25 rounded"></div><div class="h-12 bg-white/35 rounded"></div><div class="h-7 bg-white/20 rounded"></div></div>`,
+        'Pendidikan':`<div class="flex gap-2 mt-3"><div class="w-12 h-12 rounded-xl bg-yellow-300/80"></div><div class="flex-1 space-y-1"><div class="h-2 bg-white/60 rounded"></div><div class="h-2 bg-white/40 rounded"></div><div class="h-2 w-2/3 bg-white/30 rounded"></div></div></div>`,
+        'Logistik':`<div class="mt-4 h-8 bg-white/25 rounded-xl relative"><i class="fa-solid fa-truck-fast absolute left-3 top-2 text-white"></i><div class="absolute right-3 top-3 w-16 h-1 bg-white/50 rounded"></div></div>`,
+        'Kuliner':`<div class="mt-3 grid grid-cols-3 gap-2"><div class="h-10 rounded-full bg-white/35"></div><div class="h-10 rounded-full bg-orange-200/80"></div><div class="h-10 rounded-full bg-white/25"></div></div>`,
+        'Pertanian':`<div class="mt-3 flex items-end gap-2"><i class="fa-solid fa-seedling text-4xl text-lime-200"></i><div class="h-10 flex-1 rounded-xl bg-white/25"></div><div class="h-14 w-12 rounded-xl bg-white/35"></div></div>`,
+        'Interior':`<div class="mt-3 grid grid-cols-2 gap-2"><div class="h-10 rounded-xl bg-amber-100/40"></div><div class="h-10 rounded-xl bg-white/20"></div><div class="col-span-2 h-5 rounded bg-white/25"></div></div>`,
+        'Kesehatan':`<div class="mt-3 flex gap-2 items-center"><i class="fa-solid fa-user-doctor text-4xl text-white/80"></i><div class="flex-1 grid grid-cols-2 gap-1"><div class="h-8 bg-white/20 rounded"></div><div class="h-8 bg-white/30 rounded"></div></div></div>`,
+        'Furnitur':`<div class="mt-3 flex gap-2"><div class="h-12 w-20 rounded-xl bg-amber-900/50"></div><div class="h-12 flex-1 rounded-xl bg-white/25"></div></div>`,
+        'Kelautan':`<div class="mt-3"><i class="fa-solid fa-ship text-4xl text-white/80"></i><div class="h-3 mt-2 rounded-full bg-orange-400/70"></div></div>`,
+        'Digital Printing':`<div class="mt-3 flex gap-1"><div class="h-12 w-8 bg-pink-400 rounded"></div><div class="h-12 w-8 bg-cyan-400 rounded"></div><div class="h-12 w-8 bg-yellow-300 rounded"></div><div class="h-12 flex-1 bg-white/25 rounded"></div></div>`,
+        'default':`<div class="mt-3 grid grid-cols-2 gap-2"><div class="h-10 bg-white/25 rounded-xl"></div><div class="h-10 bg-white/35 rounded-xl"></div></div>`
+      };
+      return `<div class="h-36 relative text-white overflow-hidden" style="background:linear-gradient(135deg,${c1},${c2})">
+        <span class="absolute left-3 top-3 w-8 h-8 rounded-xl bg-blue-950 text-white grid place-items-center font-black text-sm z-10">${t.id}</span>
+        <div class="absolute inset-0 opacity-15"><i class="fa-solid ${ic} text-[120px] absolute -right-3 -bottom-8"></i></div>
+        <div class="relative p-4 pt-12">
+          <b class="block text-sm leading-tight max-w-[170px]">${t.title}</b>
+          ${(mini[t.category] || mini.default)}
+        </div>
+      </div>`;
+    }
+
+    function desktopPreview(t){
+      const [c1,c2,ic] = categoryAccent(t);
+      const contentMap = {
+        'Konstruksi': constructionLayout,
+        'Pendidikan': educationLayout,
+        'Logistik': logisticsLayout,
+        'Kuliner': cateringLayout,
+        'Pertanian': agricultureLayout,
+        'Interior': interiorLayout,
+        'Kesehatan': clinicLayout,
+        'Furnitur': furnitureLayout,
+        'Kelautan': marineLayout,
+        'Digital Printing': printingLayout,
+        'Retail': retailLayout,
+        'Legal': legalLayout,
+        'Kecantikan': beautyLayout,
+        'Travel': travelLayout,
+        'Bengkel': workshopLayout,
+        'Farmasi': pharmacyLayout,
+        'Properti': propertyLayout,
+        'Event Organizer': eventLayout,
+        'Konsultan': consultingLayout,
+        'Teknologi': techLayout
+      };
+      return `<div class="mini-window bg-white">
+        <div class="h-10 bg-slate-900 flex items-center gap-2 px-4"><span class="w-3 h-3 rounded-full bg-red-400"></span><span class="w-3 h-3 rounded-full bg-yellow-400"></span><span class="w-3 h-3 rounded-full bg-green-400"></span><span class="ml-4 flex-1 h-4 rounded bg-white/15"></span></div>
+        ${(contentMap[t.category] || genericLayout)(t,c1,c2,ic)}
+      </div>`;
+    }
+
+    function heroBlock(t,c1,c2,ic, extra=''){
+      return `<div class="p-6 text-white relative overflow-hidden" style="background:linear-gradient(135deg,${c1},${c2})">
+        <i class="fa-solid ${ic} absolute right-5 bottom-0 text-[120px] opacity-15"></i>
+        <div class="relative flex justify-between gap-3 mb-8"><b>${t.title}</b><span class="text-xs bg-white/20 px-3 py-1 rounded-full">${t.category}</span></div>
+        <h2 class="relative text-3xl font-black leading-tight max-w-md">${t.hero}</h2>
+        <p class="relative text-sm text-white/90 mt-3 max-w-md">${t.desc}</p>
+        <div class="relative flex gap-2 mt-5"><button class="px-4 py-2 rounded-xl bg-white text-slate-900 font-black text-xs">Lihat Layanan</button><button class="px-4 py-2 rounded-xl bg-green-600 text-white font-black text-xs">WhatsApp</button></div>
+        ${extra}
+      </div>`;
+    }
+
+    function constructionLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic,`<div class="relative mt-6 grid grid-cols-4 gap-2 text-center"><div class="bg-slate-950/40 rounded-xl p-2"><b>120+</b><small class="block">Proyek</small></div><div class="bg-slate-950/40 rounded-xl p-2"><b>80+</b><small class="block">Klien</small></div><div class="bg-slate-950/40 rounded-xl p-2"><b>15+</b><small class="block">Tahun</small></div><div class="bg-slate-950/40 rounded-xl p-2"><b>100%</b><small class="block">Mutu</small></div></div>`)+`<div class="p-5"><h3 class="font-black mb-3">Proyek Unggulan</h3><div class="grid grid-cols-3 gap-3">${['Gedung Kantor','Pabrik & Gudang','Perumahan'].map(x=>`<div class="rounded-2xl bg-slate-100 p-3"><div class="h-14 rounded-xl bg-slate-300 mb-2"></div><b class="text-xs">${x}</b></div>`).join('')}</div></div>`;}
+    function educationLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5 bg-amber-50"><h3 class="font-black mb-3">Kategori Unggulan</h3><div class="grid grid-cols-4 gap-2">${['Buku','Alat Tulis','Tas Sekolah','Kalkulator'].map(x=>`<div class="rounded-2xl bg-white p-3 text-center"><i class="fa-solid fa-book text-green-700"></i><b class="block text-xs mt-2">${x}</b></div>`).join('')}</div><div class="mt-4 rounded-2xl bg-green-700 text-white p-3 text-sm font-bold">Order cepat via WhatsApp</div></div>`;}
+    function logisticsLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5"><div class="rounded-2xl border p-3 flex gap-2"><input class="flex-1 bg-slate-50 rounded-xl px-3 py-2 text-sm" placeholder="Masukkan nomor resi"><button class="bg-red-600 text-white px-4 rounded-xl font-black text-xs">Lacak</button></div><h3 class="font-black my-3">Layanan Kami</h3><div class="grid grid-cols-3 gap-2">${['Darat','Laut','Udara'].map(x=>`<div class="rounded-2xl bg-blue-50 p-3 text-center"><i class="fa-solid fa-route text-blue-700"></i><b class="block text-xs mt-2">Pengiriman ${x}</b></div>`).join('')}</div></div>`;}
+    function cateringLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5 bg-orange-50"><h3 class="font-black mb-3 text-center">Paket Pilihan Kami</h3><div class="grid grid-cols-3 gap-3">${['Paket Harian','Nasi Box','Konsumsi Acara'].map((x,i)=>`<div class="rounded-2xl bg-white p-3 text-center"><div class="h-12 rounded-xl bg-orange-200 mb-2"></div><b class="text-xs">${x}</b><span class="block text-xs text-red-700 font-black">Mulai ${i?20:75}rb</span></div>`).join('')}</div></div>`;}
+    function agricultureLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5 bg-lime-50"><h3 class="font-black mb-3">Produk Unggulan</h3><div class="grid grid-cols-4 gap-2">${['Bibit','Pupuk','Alat Tani','Paket Petani'].map(x=>`<div class="rounded-2xl bg-white p-3"><i class="fa-solid fa-leaf text-green-700"></i><b class="block text-xs mt-2">${x}</b></div>`).join('')}</div><div class="mt-4 text-sm bg-green-700 text-white rounded-2xl p-3">Tips bertani dan konsultasi tanam tersedia.</div></div>`;}
+    function interiorLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5 bg-stone-100"><h3 class="font-black text-center mb-3">Portofolio Kami</h3><div class="grid grid-cols-4 gap-2">${['Interior','Kitchen Set','Furniture','Renovasi'].map(x=>`<div class="h-16 rounded-2xl bg-stone-300 grid place-items-center text-xs font-black">${x}</div>`).join('')}</div></div>`;}
+    function clinicLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5"><h3 class="font-black mb-3">Layanan Klinik</h3><div class="grid grid-cols-5 gap-2">${['Dokter','Checkup','Imunisasi','Lab','Keluarga'].map(x=>`<div class="rounded-2xl bg-teal-50 p-2 text-center"><i class="fa-solid fa-heart-pulse text-teal-700"></i><b class="block text-[11px] mt-1">${x}</b></div>`).join('')}</div><div class="mt-4 rounded-2xl bg-slate-50 p-3 text-sm">Jadwal: Senin–Sabtu 08.00–20.00</div></div>`;}
+    function furnitureLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5 bg-amber-50"><h3 class="font-black mb-3">Produk Unggulan</h3><div class="grid grid-cols-4 gap-2">${['Meja','Kursi','Lemari','Custom'].map(x=>`<div class="h-16 rounded-2xl bg-amber-200 grid place-items-center text-xs font-black">${x}</div>`).join('')}</div></div>`;}
+    function marineLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5 bg-blue-50"><h3 class="font-black mb-3">Kategori Produk</h3><div class="grid grid-cols-5 gap-2">${['Marine','Industri','Safety','Tools','Material'].map(x=>`<div class="rounded-2xl bg-white p-2 text-center"><i class="fa-solid fa-anchor text-blue-800"></i><b class="block text-[11px]">${x}</b></div>`).join('')}</div><div class="mt-4 bg-blue-900 text-white rounded-2xl p-3 text-sm font-bold">Unduh Katalog Produk</div></div>`;}
+    function printingLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5"><h3 class="font-black mb-3">Layanan Cetak</h3><div class="grid grid-cols-5 gap-2">${['Banner','Stiker','Brosur','Kaos','Desain'].map((x,i)=>`<div class="rounded-2xl p-2 text-center ${['bg-pink-100','bg-cyan-100','bg-yellow-100','bg-slate-100','bg-fuchsia-100'][i]}"><b class="text-[11px]">${x}</b></div>`).join('')}</div></div>`;}
+    function retailLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5"><h3 class="font-black mb-3">Produk Promo</h3><div class="grid grid-cols-4 gap-2">${['Sembako','Minuman','Rumah Tangga','Promo'].map(x=>`<div class="rounded-2xl bg-blue-50 p-3 text-center"><i class="fa-solid fa-basket-shopping text-blue-700"></i><b class="block text-xs mt-2">${x}</b></div>`).join('')}</div></div>`;}
+    function legalLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5 bg-stone-50"><h3 class="font-black mb-3">Layanan Legal</h3><div class="space-y-2">${['Pendirian PT/CV','Kontrak Bisnis','Konsultasi Hukum'].map(x=>`<div class="rounded-2xl border bg-white p-3 text-sm font-bold"><i class="fa-solid fa-scale-balanced text-amber-700 mr-2"></i>${x}</div>`).join('')}</div></div>`;}
+    function beautyLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5 bg-pink-50"><h3 class="font-black mb-3 text-center">Treatment Pilihan</h3><div class="grid grid-cols-4 gap-2">${['Facial','Acne Care','Brightening','Body'].map(x=>`<div class="rounded-2xl bg-white p-3 text-center"><i class="fa-solid fa-spa text-pink-600"></i><b class="block text-xs mt-2">${x}</b></div>`).join('')}</div></div>`;}
+    function travelLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5 bg-sky-50"><h3 class="font-black mb-3">Paket Favorit</h3><div class="grid grid-cols-4 gap-2">${['Bali','Bromo','Malaysia','Thailand'].map(x=>`<div class="rounded-2xl bg-white p-3"><div class="h-10 rounded bg-sky-200 mb-2"></div><b class="text-xs">${x}</b></div>`).join('')}</div></div>`;}
+    function workshopLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5 bg-zinc-100"><h3 class="font-black mb-3">Paket Service</h3><div class="grid grid-cols-3 gap-2">${['Tune Up','Ganti Oli','Rem & Kaki-kaki'].map(x=>`<div class="rounded-2xl bg-white p-3 text-center"><i class="fa-solid fa-screwdriver-wrench text-orange-600"></i><b class="block text-xs mt-2">${x}</b></div>`).join('')}</div></div>`;}
+    function pharmacyLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5 bg-emerald-50"><h3 class="font-black mb-3">Kategori Produk</h3><div class="grid grid-cols-4 gap-2">${['Vitamin','Alkes','Obat OTC','Herbal'].map(x=>`<div class="rounded-2xl bg-white p-3 text-center"><i class="fa-solid fa-prescription-bottle-medical text-emerald-700"></i><b class="block text-xs mt-2">${x}</b></div>`).join('')}</div></div>`;}
+    function propertyLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5"><h3 class="font-black mb-3">Listing Properti</h3><div class="grid grid-cols-3 gap-2">${['Rumah','Ruko','Tanah'].map(x=>`<div class="rounded-2xl bg-amber-50 p-3"><div class="h-12 bg-amber-200 rounded-xl mb-2"></div><b class="text-xs">${x}</b></div>`).join('')}</div></div>`;}
+    function eventLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5 bg-purple-50"><h3 class="font-black mb-3">Paket Event</h3><div class="grid grid-cols-3 gap-2">${['Wedding','Gathering','Launching'].map(x=>`<div class="rounded-2xl bg-white p-3 text-center"><i class="fa-solid fa-calendar-check text-purple-700"></i><b class="block text-xs mt-2">${x}</b></div>`).join('')}</div></div>`;}
+    function consultingLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5"><h3 class="font-black mb-3">Solusi Konsultan</h3><div class="grid grid-cols-3 gap-2">${['SOP','Audit','Strategi'].map(x=>`<div class="rounded-2xl bg-blue-50 p-3 text-center"><i class="fa-solid fa-chart-line text-blue-800"></i><b class="block text-xs mt-2">${x}</b></div>`).join('')}</div></div>`;}
+    function techLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5 bg-cyan-50"><h3 class="font-black mb-3">Layanan IT</h3><div class="grid grid-cols-4 gap-2">${['Website','App','Cloud','Support'].map(x=>`<div class="rounded-2xl bg-white p-3 text-center"><i class="fa-solid fa-code text-cyan-700"></i><b class="block text-xs mt-2">${x}</b></div>`).join('')}</div></div>`;}
+    function genericLayout(t,c1,c2,ic){return heroBlock(t,c1,c2,ic)+`<div class="p-5 grid grid-cols-3 gap-3">${t.features.slice(0,3).map(f=>`<div class="rounded-2xl bg-slate-50 border p-3"><b class="text-xs">${f}</b></div>`).join('')}</div>`;}
+
+    function mobilePreview(t){
+      const [c1,c2,ic] = categoryAccent(t);
+      const blocks = {
+        'Konstruksi':['Proyek','Layanan','Statistik'], 'Pendidikan':['Kategori','Produk','Testimoni'], 'Logistik':['Tracking','Layanan','Coverage'], 'Kuliner':['Menu','Paket','Order'], 'Pertanian':['Produk','Tips','Konsultasi'], 'Interior':['Portfolio','Layanan','Konsultasi'], 'Kesehatan':['Dokter','Jadwal','Booking'], 'Furnitur':['Produk','Workshop','Custom'], 'Kelautan':['Katalog','Supply','Procurement'], 'Digital Printing':['Cetak','Portfolio','Order']
+      }[t.category] || ['Layanan','Profil','Kontak'];
+      return `<div class="py-5 flex justify-center bg-slate-100"><div class="phone-shell w-[250px] bg-white">
+        <div class="h-7 bg-slate-900"></div>
+        <div class="p-4 text-white min-h-[310px] relative overflow-hidden" style="background:linear-gradient(135deg,${c1},${c2})">
+          <i class="fa-solid ${ic} absolute right-3 bottom-2 text-[90px] opacity-15"></i>
+          <div class="flex items-center justify-between mb-8"><b class="text-sm">${t.title.split(' ').slice(0,3).join(' ')}</b><i class="fa-solid fa-bars"></i></div>
+          <span class="text-xs bg-white/20 px-3 py-1 rounded-full">${t.category}</span>
+          <h2 class="text-2xl font-black leading-tight mt-4">${t.hero}</h2>
+          <p class="text-xs text-white/90 mt-3">${t.desc}</p>
+          <button class="mt-5 w-full py-3 rounded-xl bg-green-600 text-white font-black text-sm">Order via WhatsApp</button>
+        </div>
+        <div class="p-3 space-y-2">${blocks.map(x=>`<div class="rounded-xl bg-slate-50 p-3 text-xs font-black"><i class="fa-solid fa-check text-green-600 mr-1"></i>${x}</div>`).join('')}</div>
+      </div></div>`;
+    }
+
+    function renderPreview(){
+      const t = selectedTemplate;
+      document.getElementById('previewTitle').textContent = `${t.id}. ${t.title}`;
+      document.getElementById('previewCategory').textContent = t.category;
+      document.getElementById('previewCanvas').innerHTML = viewMode === 'desktop' ? desktopPreview(t) : mobilePreview(t);
+      document.getElementById('previewFeatures').innerHTML = t.features.map(f=>`<div class="flex gap-3 rounded-2xl bg-slate-50 border border-slate-200 p-3"><span class="w-10 h-10 rounded-xl bg-blue-50 text-blue-800 grid place-items-center shrink-0"><i class="fa-solid fa-circle-check"></i></span><div><b class="text-sm">${f}</b><p class="text-xs text-slate-500">Masuk dalam template Starter dan bisa disesuaikan.</p></div></div>`).join('');
+    }
+
+    function chooseTemplate(){
+      document.getElementById('brand').focus();
+      document.getElementById('order').scrollIntoView({behavior:'smooth'});
+    }
+
+    function sendSelectedToWhatsApp(){
+      const t = selectedTemplate || templates[0];
+      const name = document.getElementById('name')?.value || '-';
+      const wa = document.getElementById('wa')?.value || '-';
+      const brand = document.getElementById('brand')?.value || '-';
+      const notes = document.getElementById('notes')?.value || '-';
+      const text = `Order Website Starter%0A`+
+        `Template: ${t.id}. ${t.title}%0A`+
+        `Kategori: ${t.category}%0A`+
+        `Industri: ${t.industry}%0A`+
+        `Harga: ${t.price}%0A`+
+        `Nama: ${name}%0A`+
+        `WA Customer: ${wa}%0A`+
+        `Brand/Bisnis: ${brand}%0A`+
+        `Catatan: ${notes}%0A`;
+      window.open(`https://wa.me/${targetWa}?text=${text}`,'_blank');
+    }
+
+    renderCategories();
+    renderTemplates();
+    renderPreview();
+  </script>
+</body>
+</html>
