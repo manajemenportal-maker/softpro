@@ -43,6 +43,7 @@ html{scroll-behavior:smooth} body{font-family:Inter,system-ui,-apple-system,Blin
       <button onclick="openCart()" class="relative w-11 h-11 rounded-xl bg-white/15 border border-white/25 grid place-items-center">
         <i class="fa-solid fa-cart-shopping"></i><span id="cartBadge" class="absolute -top-1 -right-1 bg-yellow-300 text-orange-700 rounded-full text-[10px] font-black w-5 h-5 grid place-items-center">0</span>
       </button>
+      <span class="hidden md:inline-flex px-3 py-2 rounded-xl bg-white/15 border border-white/25 text-xs font-black"><i class="fa-solid fa-database mr-1"></i> DB Aktif</span>
       <button onclick="toggleMobileMenu()" class="lg:hidden w-11 h-11 rounded-xl bg-white/15 border border-white/25 grid place-items-center"><i class="fa-solid fa-bars"></i></button>
     </div>
     <div id="mobileMenu" class="hidden lg:hidden pt-3">
@@ -203,6 +204,67 @@ html{scroll-behavior:smooth} body{font-family:Inter,system-ui,-apple-system,Blin
   </div>
 </div>
 
+
+<script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+  import { getAnalytics, isSupported } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
+  import {
+    getFirestore,
+    collection,
+    addDoc,
+    serverTimestamp
+  } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+
+  const firebaseConfig = {
+    apiKey: "AIzaSyBfV8P9R-E08rt-s17Uhslc2L9BojOL-90",
+    authDomain: "softpro-11da5.firebaseapp.com",
+    projectId: "softpro-11da5",
+    storageBucket: "softpro-11da5.firebasestorage.app",
+    messagingSenderId: "485909858785",
+    appId: "1:485909858785:web:b5da859628a2ea0b062aa0",
+    measurementId: "G-2Q5V1NRWN7"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getFirestore(app);
+
+  isSupported()
+    .then((supported) => {
+      if (supported) {
+        getAnalytics(app);
+      }
+    })
+    .catch(() => {});
+
+  window.firebaseDb = db;
+  window.firebaseReady = true;
+
+  window.saveOrderToFirebase = async function(orderData) {
+    const payload = {
+      ...orderData,
+      status: "new",
+      sourceApp: "WebAppsMarket",
+      createdAt: serverTimestamp(),
+      updatedAt: serverTimestamp()
+    };
+
+    const docRef = await addDoc(collection(db, "orders"), payload);
+    return docRef.id;
+  };
+
+  window.saveLeadToFirebase = async function(leadData) {
+    const payload = {
+      ...leadData,
+      status: "new",
+      sourceApp: "WebAppsMarket",
+      createdAt: serverTimestamp()
+    };
+
+    const docRef = await addDoc(collection(db, "leads"), payload);
+    return docRef.id;
+  };
+</script>
+
 <script>
 const templates = [{"id": 1, "pack": "Starter", "name": "Aruna Konstruksi", "company": "PT Aruna Konstruksi Nusantara", "cat": "Konstruksi", "price": 75000, "priceText": "Mulai 75rb+/tahun", "c1": "#0b2a55", "c2": "#f97316", "icon": "fa-building", "hero": "Membangun Solusi, Mewujudkan Kepercayaan", "items": ["Proyek", "Layanan", "Klien", "Kontak"]}, {"id": 2, "pack": "Starter", "name": "Pustaka Edukasi", "company": "CV Pustaka Edukasi Mandiri", "cat": "Pendidikan", "price": 75000, "priceText": "Mulai 75rb+/tahun", "c1": "#14532d", "c2": "#facc15", "icon": "fa-book-open", "hero": "Lengkapi Kebutuhan Belajar dengan Produk Terbaik", "items": ["Buku", "ATK", "Promo", "Order"]}, {"id": 3, "pack": "Starter", "name": "Nusantara Logistik", "company": "PT Cipta Logistik Prima", "cat": "Logistik", "price": 75000, "priceText": "Mulai 75rb+/tahun", "c1": "#0b3b8c", "c2": "#dc2626", "icon": "fa-truck-fast", "hero": "Kirim Barang Aman, Cepat & Tepat Sampai Tujuan", "items": ["Tracking", "Darat", "Laut", "Udara"]}, {"id": 4, "pack": "Starter", "name": "Rasa Boga", "company": "CV Rasa Boga Nusantara", "cat": "Kuliner", "price": 75000, "priceText": "Mulai 75rb+/tahun", "c1": "#7f1d1d", "c2": "#ea580c", "icon": "fa-utensils", "hero": "Catering Harian dan Konsumsi Acara", "items": ["Menu", "Paket", "Testimoni", "Order"]}, {"id": 5, "pack": "Starter", "name": "Bumi Hijau", "company": "PT Bumi Hijau Agrindo", "cat": "Pertanian", "price": 75000, "priceText": "Mulai 75rb+/tahun", "c1": "#166534", "c2": "#84cc16", "icon": "fa-seedling", "hero": "Kebutuhan Pertanian Berkualitas", "items": ["Bibit", "Pupuk", "Tips", "Konsultasi"]}, {"id": 6, "pack": "Starter", "name": "Sentra Interior", "company": "CV Sentra Interior Kreasi", "cat": "Interior", "price": 75000, "priceText": "Mulai 75rb+/tahun", "c1": "#1f2937", "c2": "#b45309", "icon": "fa-couch", "hero": "Ciptakan Ruang Impian Lebih Elegan", "items": ["Portfolio", "Kitchen", "Furniture", "Kontak"]}, {"id": 7, "pack": "Starter", "name": "Sinar Medika", "company": "PT Sinar Medika Pratama", "cat": "Kesehatan", "price": 75000, "priceText": "Mulai 75rb+/tahun", "c1": "#0f766e", "c2": "#38bdf8", "icon": "fa-kit-medical", "hero": "Sehat Anda, Prioritas Kami", "items": ["Dokter", "Jadwal", "Booking", "Lab"]}, {"id": 8, "pack": "Starter", "name": "Mebel Jati", "company": "UD Mebel Jati Lestari", "cat": "Furnitur", "price": 75000, "priceText": "Mulai 75rb+/tahun", "c1": "#3f2a1d", "c2": "#166534", "icon": "fa-chair", "hero": "Mebel Kayu Berkualitas dan Terpercaya", "items": ["Meja", "Kursi", "Lemari", "Custom"]}, {"id": 9, "pack": "Starter", "name": "Marine Supply", "company": "PT Samudra Marine Supply", "cat": "Kelautan", "price": 75000, "priceText": "Mulai 75rb+/tahun", "c1": "#082f49", "c2": "#ea580c", "icon": "fa-ship", "hero": "Solusi Supply Marine dan Industri", "items": ["Marine", "Safety", "Tools", "Katalog"]}, {"id": 10, "pack": "Starter", "name": "Digital Printing", "company": "CV Digital Printing Sejahtera", "cat": "Digital Printing", "price": 75000, "priceText": "Mulai 75rb+/tahun", "c1": "#0f172a", "c2": "#ec4899", "icon": "fa-print", "hero": "Cetak Berkualitas, Branding Maksimal", "items": ["Banner", "Stiker", "Brosur", "Desain"]}, {"id": 11, "pack": "Starter", "name": "Retailindo", "company": "PT Sumber Rezeki Retailindo", "cat": "Retail", "price": 75000, "priceText": "Mulai 75rb+/tahun", "c1": "#0f3d91", "c2": "#f59e0b", "icon": "fa-store", "hero": "Belanja Mudah, Produk Lengkap", "items": ["Produk", "Promo", "Lokasi", "Order"]}, {"id": 12, "pack": "Starter", "name": "Lex Prima", "company": "CV Lex Prima Legal Services", "cat": "Legal", "price": 75000, "priceText": "Mulai 75rb+/tahun", "c1": "#111827", "c2": "#a16207", "icon": "fa-scale-balanced", "hero": "Solusi Legalitas Bisnis Terarah", "items": ["PT/CV", "Kontrak", "Dokumen", "Konsultasi"]}, {"id": 13, "pack": "Starter", "name": "Cantik Alami", "company": "UD Cantik Alami Beauty", "cat": "Kecantikan", "price": 75000, "priceText": "Mulai 75rb+/tahun", "c1": "#be185d", "c2": "#f9a8d4", "icon": "fa-spa", "hero": "Perawatan Terbaik untuk Diri Terbaikmu", "items": ["Facial", "Promo", "Booking", "Review"]}, {"id": 14, "pack": "Starter", "name": "Jelajah Dunia", "company": "PT Jelajah Dunia Travel", "cat": "Travel", "price": 75000, "priceText": "Mulai 75rb+/tahun", "c1": "#4338ca", "c2": "#0ea5e9", "icon": "fa-plane-departure", "hero": "Liburan Mudah, Cerita Tak Terlupakan", "items": ["Paket", "Jadwal", "Destinasi", "Pesan"]}, {"id": 15, "pack": "Starter", "name": "Griya Properti", "company": "CV Griya Sejahtera Properti", "cat": "Properti", "price": 75000, "priceText": "Mulai 75rb+/tahun", "c1": "#0f172a", "c2": "#d97706", "icon": "fa-house-chimney", "hero": "Temukan Rumah dan Investasi Terbaik", "items": ["Rumah", "Ruko", "Tanah", "Agent"]}, {"id": 16, "pack": "Business", "name": "Akuntansi Mitra", "company": "PT Akuntansi Mitra Usaha", "cat": "Keuangan", "price": 250000, "priceText": "Mulai 250rb+", "c1": "#0f172a", "c2": "#0ea5e9", "icon": "fa-file-invoice-dollar", "hero": "Laporan Rapi, Keputusan Lebih Pasti", "items": ["Pajak", "Laporan", "Konsultasi", "Klien"]}, {"id": 17, "pack": "Business", "name": "Fesyen Karya", "company": "CV Fesyen Karya Nusantara", "cat": "Fashion", "price": 250000, "priceText": "Mulai 250rb+", "c1": "#111827", "c2": "#ec4899", "icon": "fa-shirt", "hero": "Brand Fashion Lokal Lebih Premium", "items": ["Koleksi", "Lookbook", "Order", "Promo"]}, {"id": 18, "pack": "Business", "name": "Kreasi Arsitek", "company": "PT Kreasi Ruang Arsitek", "cat": "Arsitektur", "price": 250000, "priceText": "Mulai 250rb+", "c1": "#1f2937", "c2": "#f59e0b", "icon": "fa-drafting-compass", "hero": "Rancang Ruang Lebih Visioner", "items": ["Portfolio", "Tahapan", "Proyek", "Konsultasi"]}, {"id": 19, "pack": "Business", "name": "Prima Hotel", "company": "PT Prima Hotel Sejahtera", "cat": "Hospitality", "price": 250000, "priceText": "Mulai 250rb+", "c1": "#0f172a", "c2": "#38bdf8", "icon": "fa-hotel", "hero": "Booking Lebih Mudah dan Menarik", "items": ["Kamar", "Fasilitas", "Booking", "Review"]}, {"id": 20, "pack": "Business", "name": "Teknik Mesin", "company": "PT Teknik Mesin Industri", "cat": "Manufaktur", "price": 250000, "priceText": "Mulai 250rb+", "c1": "#1e293b", "c2": "#f97316", "icon": "fa-industry", "hero": "Kapasitas Produksi Lebih Meyakinkan", "items": ["Mesin", "Produksi", "QC", "Inquiry"]}, {"id": 21, "pack": "Premium", "name": "FlowERP", "company": "PT FlowERP Nusantara", "cat": "SaaS", "price": 2000000, "priceText": "Mulai 2jt+", "c1": "#020617", "c2": "#2563eb", "icon": "fa-chart-line", "hero": "Kelola Operasional dalam Satu Sistem", "items": ["Sales", "Stock", "Finance", "PO"]}, {"id": 22, "pack": "Premium", "name": "CRM Sukses", "company": "CV CRM Sukses Pelanggan", "cat": "SaaS", "price": 2000000, "priceText": "Mulai 2jt+", "c1": "#0f172a", "c2": "#06b6d4", "icon": "fa-users-viewfinder", "hero": "Pantau Prospek dan Closing Akurat", "items": ["Lead", "Pipeline", "Follow Up", "Closing"]}, {"id": 23, "pack": "Premium", "name": "MedApp Klinik", "company": "PT MedApp Klinik Digital", "cat": "Aplikasi Kesehatan", "price": 2000000, "priceText": "Mulai 2jt+", "c1": "#064e3b", "c2": "#0ea5e9", "icon": "fa-laptop-medical", "hero": "Sistem Klinik untuk Antrian dan Billing", "items": ["Antrian", "Billing", "Pasien", "Laporan"]}, {"id": 24, "pack": "Premium", "name": "SmartProc", "company": "PT SmartProc Procurement Hub", "cat": "Procurement", "price": 2000000, "priceText": "Mulai 2jt+", "c1": "#1f2937", "c2": "#14b8a6", "icon": "fa-file-signature", "hero": "Kelola Vendor dan Approval Pembelian", "items": ["PR", "PO", "Vendor", "Approval"]}, {"id": 25, "pack": "Premium", "name": "InsightBoard", "company": "CV InsightBoard Analytics", "cat": "Analytics", "price": 2000000, "priceText": "Mulai 2jt+", "c1": "#020617", "c2": "#7c3aed", "icon": "fa-chart-pie", "hero": "Data Bisnis Menjadi Insight Mudah Dibaca", "items": ["KPI", "Grafik", "Unit", "Export"]}];
 const domains = [{"ext": "Tanpa domain dulu", "base": 0}, {"ext": ".my.id", "base": 9900}, {"ext": ".biz.id", "base": 9900}, {"ext": ".web.id", "base": 50000}, {"ext": ".com promo", "base": 124900}, {"ext": ".com normal", "base": 195000}, {"ext": ".id", "base": 219000}, {"ext": ".net", "base": 215000}, {"ext": ".co.id", "base": 300000}];
@@ -295,7 +357,69 @@ function closeModal(){document.getElementById('modal').classList.add('hidden');d
 function renderDomains(){document.getElementById('domainSelect').innerHTML=domains.map((d,i)=>`<option value="${i}">${d.ext} - ${rupiah(d.base)}</option>`).join('')}
 function calculateOrderTotal(){const websitePrice=Number(document.getElementById('websitePrice')?.value||selectedTemplate.price); const d=domains[Number(document.getElementById('domainSelect')?.value||0)]||domains[0]; const fee=Math.round(d.base*feeRate); const total=websitePrice+d.base+fee; const sum=document.getElementById('orderSummary'); if(sum)sum.innerHTML=`<div class="grid md:grid-cols-2 gap-3"><div><b>Template:</b><br>${selectedTemplate.company}</div><div><b>Harga:</b><br>${rupiah(websitePrice)}</div><div><b>Domain:</b><br>${d.ext}</div><div><b>Domain + fee:</b><br>${rupiah(d.base)} + ${rupiah(fee)}</div><div class="md:col-span-2 bg-orange-50 rounded-xl p-4"><b>Total estimasi:</b> <span class="text-2xl font-black text-orange-600">${rupiah(total)}</span></div></div>`; return {websitePrice,d,fee,total}}
 function chooseTemplate(){document.getElementById('order').scrollIntoView({behavior:'smooth'});document.getElementById('websitePrice').value=selectedTemplate.price;calculateOrderTotal();setTimeout(()=>document.getElementById('brand').focus(),400)}
-function sendSelectedToWhatsApp(source='Order'){const c=calculateOrderTotal(); const name=document.getElementById('name')?.value||'-'; const wa=document.getElementById('wa')?.value||'-'; const brand=document.getElementById('brand')?.value||'-'; const notes=document.getElementById('notes')?.value||'-'; const t=selectedTemplate; const text=`${source}%0ATemplate: ${t.company}%0APaket: ${t.pack}%0AKategori: ${t.cat}%0AHarga: ${rupiah(c.websitePrice)}%0ADomain: ${c.d.ext}%0AFee Domain: ${rupiah(c.fee)}%0ATotal: ${rupiah(c.total)}%0ANama: ${name}%0AWA: ${wa}%0ABrand: ${brand}%0ACatatan: ${notes}`; window.open(`https://wa.me/${targetWa}?text=${text}`,'_blank')}
+async function sendSelectedToWhatsApp(source='Order'){
+  const c = calculateOrderTotal();
+  const name = document.getElementById('name')?.value || '-';
+  const wa = document.getElementById('wa')?.value || '-';
+  const brand = document.getElementById('brand')?.value || '-';
+  const notes = document.getElementById('notes')?.value || '-';
+  const t = selectedTemplate;
+
+  const orderData = {
+    source,
+    customerName: name,
+    customerWhatsapp: wa,
+    brandName: brand,
+    notes,
+    templateId: t.id,
+    templateName: t.name,
+    templateCompany: t.company,
+    package: t.pack,
+    category: t.cat,
+    basePrice: c.websitePrice,
+    domainExtension: c.d.ext,
+    domainBasePrice: c.d.base,
+    domainCompanyFee: c.fee,
+    totalEstimate: c.total,
+    cartTemplateIds: cart,
+    favoriteTemplateIds: favorites,
+    userAgent: navigator.userAgent
+  };
+
+  let firebaseOrderId = '-';
+  try {
+    if (typeof window.saveOrderToFirebase === 'function') {
+      firebaseOrderId = await window.saveOrderToFirebase(orderData);
+      openToast('Pesanan tersimpan ke database');
+    }
+  } catch (error) {
+    console.error('Gagal simpan order ke Firebase:', error);
+    openModal(
+      'Database belum tersimpan',
+      'Pesanan tetap bisa dikirim via WhatsApp',
+      '<div class="rounded-2xl bg-red-50 p-5 text-red-700 font-bold">Cek Firestore Rules atau koneksi Firebase. Order WhatsApp tetap bisa dilanjutkan.</div>',
+      'FIREBASE'
+    );
+  }
+
+  const text =
+    `${source}%0A`+
+    `ID Database: ${firebaseOrderId}%0A`+
+    `Template: ${t.company}%0A`+
+    `Paket: ${t.pack}%0A`+
+    `Kategori: ${t.cat}%0A`+
+    `Harga: ${rupiah(c.websitePrice)}%0A`+
+    `Domain: ${c.d.ext}%0A`+
+    `Harga Domain: ${rupiah(c.d.base)}%0A`+
+    `Fee Domain: ${rupiah(c.fee)}%0A`+
+    `Total: ${rupiah(c.total)}%0A`+
+    `Nama: ${name}%0A`+
+    `WA: ${wa}%0A`+
+    `Brand: ${brand}%0A`+
+    `Catatan: ${notes}`;
+
+  window.open(`https://wa.me/${targetWa}?text=${text}`,'_blank');
+}
 
 renderFilters();renderTemplates();renderDomains();renderPreview();updateCartBadge();document.getElementById('websitePrice').value=selectedTemplate.price;calculateOrderTotal();
 </script>
