@@ -105,9 +105,9 @@ html{scroll-behavior:smooth} body{font-family:Inter,system-ui,-apple-system,Blin
 
 <section id="galeri" class="max-w-[1600px] mx-auto px-3 md:px-5 py-3 grid xl:grid-cols-[230px_1fr_500px] gap-3">
   <aside class="shop-card p-4 hidden xl:block sticky top-24 h-fit max-h-[calc(100vh-7rem)] overflow-auto">
-    <h3 class="font-black mb-3">Filter Paket</h3>
+    <h3 class="font-black mb-3">Paket Dijual</h3>
     <div id="packageFilters" class="space-y-2"></div>
-    <h3 class="font-black mt-5 mb-3">Pilih Kategori</h3>
+    <h3 class="font-black mt-5 mb-3">Kategori Paket Terpilih</h3>
     <div id="categoryFilters" class="space-y-2"></div>
   </aside>
 
@@ -116,7 +116,8 @@ html{scroll-behavior:smooth} body{font-family:Inter,system-ui,-apple-system,Blin
       <div class="flex flex-col md:flex-row md:items-center justify-between gap-3">
         <div>
           <h2 class="text-2xl md:text-4xl font-black">Galeri <span class="text-orange-600">Template</span></h2>
-          <p class="text-slate-500 text-sm">Tampilan marketplace, customer bebas pilih desain dan langsung pesan.</p><div id="activeFilterLabel" class="mt-2 text-xs font-black text-orange-600"></div>
+          <p class="text-slate-500 text-sm">Kategori sudah dikoneksikan langsung ke paket yang dijual.</p>
+          <div id="activeFilterLabel" class="mt-2 text-xs font-black text-orange-600"></div><div id="activeFilterLabel" class="mt-2 text-xs font-black text-orange-600"></div>
         </div>
         <select id="sortSelect" onchange="renderTemplates()" class="rounded-xl border border-slate-200 px-4 py-3 bg-slate-50 font-bold text-sm">
           <option value="default">Urutkan Default</option>
@@ -280,12 +281,24 @@ let favorites = JSON.parse(localStorage.getItem('wam_fav') || '[]');
 
 const rupiah = n => new Intl.NumberFormat('id-ID',{style:'currency',currency:'IDR',maximumFractionDigits:0}).format(Number(n||0));
 const packs = ['Semua', ...new Set(templates.map(t=>t.pack))];
-const cats = ['Semua', ...new Set(templates.map(t=>t.cat))];
+function getAvailableCategories(){
+  const source = selectedPackage === 'Semua'
+    ? templates
+    : templates.filter(t => t.pack === selectedPackage);
+
+  return ['Semua', ...new Set(source.map(t => t.cat))];
+}
 
 function toggleMobileMenu(force){const m=document.getElementById('mobileMenu'); if(force===false)return m.classList.add('hidden'); m.classList.toggle('hidden')}
 function syncSearch(v){document.getElementById('topSearch').value=v; renderTemplates(); document.getElementById('galeri').scrollIntoView({behavior:'smooth'})}
 function setPackageAndScroll(p){
   selectedPackage = p;
+
+  const availableCats = getAvailableCategories();
+  if (!availableCats.includes(selectedCategory)) {
+    selectedCategory = 'Semua';
+  }
+
   refreshGalleryOnly();
   scrollGalleryIntoView();
 }
@@ -301,15 +314,84 @@ function scrollGalleryIntoView(){
 }
 
 function setCategoryAndScroll(c){
+  if (c !== 'Semua') {
+    const matched = templates.find(t => t.cat === c);
+    if (matched && selectedPackage !== 'Semua' && matched.pack !== selectedPackage) {
+      selectedPackage = matched.pack;
+    }
+  }
+
   selectedCategory = c;
   refreshGalleryOnly();
   scrollGalleryIntoView();
 }
 
+function getFilteredByPackageOnly(){
+  return selectedPackage === 'Semua'
+    ? templates
+    : templates.filter(t => t.pack === selectedPackage);
+}
+
 function renderFilters(){
-  document.getElementById('packageFilters').innerHTML = packs.map(p=>`<button onclick="setPackage('${p}')" class="filter-btn ${p===selectedPackage?'active':''} w-full text-left px-3 py-2 rounded-xl border text-sm font-black">${p}</button>`).join('');
-  document.getElementById('categoryFilters').innerHTML = cats.map(c=>`<button onclick="setCategory('${c}')" class="filter-btn ${c===selectedCategory?'active':''} w-full text-left px-3 py-2 rounded-xl border text-sm font-bold">${c}</button>`).join('');
-  document.getElementById('mobileFilters').innerHTML = [...packs, ...cats.slice(1,8)].map(x=>`<button onclick="${packs.includes(x)?`setPackage('${x}')`:`setCategory('${x}')`}" class="filter-btn ${x===selectedPackage||x===selectedCategory?'active':''} px-3 py-2 rounded-xl border text-xs font-black">${x}</button>`).join('');
+  const availableCats = getAvailableCategories();
+
+  document.getElementById('packageFilters').innerHTML = packs.map(pack => {
+    const count = pack === 'Semua'
+      ? templates.length
+      : templates.filter(t => t.pack === pack).length;
+
+    const priceLabel = pack === 'Starter'
+      ? 'Rp75rb+'
+      : pack === 'Business'
+        ? 'Rp250rb+'
+        : pack === 'Premium'
+          ? 'Rp2jt+'
+          : 'Semua';
+
+    return `
+      <button onclick="setPackage('${pack}')" class="filter-btn ${pack===selectedPackage?'active':''} w-full text-left px-3 py-3 rounded-xl border text-sm font-black">
+        <div class="flex items-center justify-between gap-2">
+          <span>${pack === 'Semua' ? 'Semua Paket' : pack}</span>
+          <span class="text-[11px] opacity-80">${count}</span>
+        </div>
+        <div class="text-[11px] opacity-80 mt-1">${priceLabel}</div>
+      </button>
+    `;
+  }).join('');
+
+  document.getElementById('categoryFilters').innerHTML = availableCats.map(cat => {
+    const count = cat === 'Semua'
+      ? getFilteredByPackageOnly().length
+      : getFilteredByPackageOnly().filter(t => t.cat === cat).length;
+
+    return `
+      <button onclick="setCategory('${cat}')" class="filter-btn ${cat===selectedCategory?'active':''} w-full text-left px-3 py-2 rounded-xl border text-sm font-bold">
+        <div class="flex items-center justify-between gap-2">
+          <span>${cat === 'Semua' ? 'Semua Kategori Paket' : cat}</span>
+          <span class="text-[11px] opacity-70">${count}</span>
+        </div>
+      </button>
+    `;
+  }).join('');
+
+  const packageMobile = packs.map(pack => `
+    <button onclick="setPackage('${pack}')" class="filter-btn ${pack===selectedPackage?'active':''} px-3 py-2 rounded-xl border text-xs font-black">
+      ${pack === 'Semua' ? 'Semua Paket' : pack}
+    </button>
+  `).join('');
+
+  const categoryMobile = availableCats.slice(0, 10).map(cat => `
+    <button onclick="setCategory('${cat}')" class="filter-btn ${cat===selectedCategory?'active':''} px-3 py-2 rounded-xl border text-xs font-black">
+      ${cat === 'Semua' ? 'Semua Kategori' : cat}
+    </button>
+  `).join('');
+
+  document.getElementById('mobileFilters').innerHTML = `
+    <div class="w-full text-xs font-black text-slate-500">Paket</div>
+    ${packageMobile}
+    <div class="w-full text-xs font-black text-slate-500 mt-2">Kategori Paket Terpilih</div>
+    ${categoryMobile}
+  `;
 }
 function setPackage(p){
   selectedPackage = p;
@@ -345,9 +427,34 @@ function renderTemplates(){
   const data=getFiltered();
   const label = document.getElementById('activeFilterLabel');
   if (label) {
-    label.textContent = `${selectedPackage === 'Semua' ? 'Semua Paket' : selectedPackage} • ${selectedCategory === 'Semua' ? 'Semua Kategori' : selectedCategory} • ${data.length} pilihan`;
+    const packLabel = selectedPackage === 'Semua' ? 'Semua Paket' : selectedPackage;
+    const catLabel = selectedCategory === 'Semua' ? 'Semua Kategori Paket' : selectedCategory;
+    label.textContent = `${packLabel} • ${catLabel} • ${data.length} preview siap pilih`;
   }
-  document.getElementById('templateGrid').innerHTML=data.map(t=>`<article onclick="showPreview(${t.id})" class="product ${selectedTemplate.id===t.id?'active':''}">
+  if (selectedPackage === 'Semua' && selectedCategory === 'Semua') {
+    const grouped = packs
+      .filter(pack => pack !== 'Semua')
+      .map(pack => ({
+        pack,
+        data: data.filter(t => t.pack === pack)
+      }))
+      .filter(group => group.data.length);
+
+    document.getElementById('templateGrid').innerHTML = grouped.map(group => `
+      <div class="col-span-full flex items-center justify-between mt-2 mb-1">
+        <h3 class="text-lg md:text-2xl font-black">${group.pack}</h3>
+        <button onclick="setPackage('${group.pack}')" class="text-orange-600 font-black text-sm">Lihat paket ini</button>
+      </div>
+      ${group.data.map(t => renderTemplateCard(t)).join('')}
+    `).join('');
+    return;
+  }
+
+  document.getElementById('templateGrid').innerHTML=data.map(t=>renderTemplateCard(t)).join('')||'<div class="shop-card col-span-full p-8 text-center font-bold">Template tidak ditemukan.</div>';
+}
+
+function renderTemplateCard(t){
+  return `<article onclick="showPreview(${t.id})" class="product ${selectedTemplate.id===t.id?'active':''}">
     ${cardThumb(t)}
     <div class="p-3">
       <div class="text-[11px] text-slate-400 font-bold">${t.pack} • ${t.cat}</div>
@@ -355,7 +462,7 @@ function renderTemplates(){
       <div class="text-orange-600 font-black text-sm mt-2">${t.priceText}</div>
       <div class="flex gap-2 mt-3"><button onclick="event.stopPropagation();showPreview(${t.id})" class="flex-1 py-2 rounded-lg border border-orange-200 text-orange-600 text-xs font-black">Preview</button><button onclick="event.stopPropagation();addToCart(${t.id})" class="w-9 rounded-lg bg-orange-500 text-white"><i class="fa-solid fa-cart-plus"></i></button></div>
     </div>
-  </article>`).join('')||'<div class="shop-card col-span-full p-8 text-center font-bold">Template tidak ditemukan.</div>';
+  </article>`;
 }
 
 function showPreview(id){selectedTemplate=templates.find(t=>t.id===id)||templates[0]; document.getElementById('websitePrice').value=selectedTemplate.price; renderTemplates(); renderPreview(); calculateOrderTotal()}
